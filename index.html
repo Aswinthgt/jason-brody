@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Mark</title>
+    
+    <link rel="stylesheet" href="jul 14.css">
+    <script>
+        function calculate() {
+            var a = document.getElementById("name").value;
+            var b = document.getElementById("regno").value;
+            var c = document.getElementById("classsec").value;
+            var d = parseInt(document.getElementById("tamil").value);
+            var e = parseInt(document.getElementById("english").value);
+            var f = parseInt(document.getElementById("maths").value);
+            var i = parseInt(document.getElementById("science").value);
+            var g = parseInt(document.getElementById("socialscience").value);
+
+
+
+
+
+            if (a == "") {
+                document.getElementById("name").style.borderColor = "red";
+                document.getElementById("error1").innerHTML = "please fill your name";
+            } else {
+                document.getElementById("name").style.borderColor = "green";
+                document.getElementById("error1").style.contentVisibility = "hidden";
+
+            }
+            if (b == "") {
+                document.getElementById("regno").style.borderColor = "red";
+                document.getElementById("error2").innerHTML = "please fill your Regno";
+            } else {
+                document.getElementById("regno").style.borderColor = "green";
+                document.getElementById("error2").style.contentVisibility = "hidden";
+
+            }
+            if (c == "std") {
+                document.getElementById("classsec").style.borderColor = "red";
+                document.getElementById("error3").innerHTML = "please select class&sec";
+
+            } else {
+                document.getElementById("classsec").style.borderColor = "green";
+                document.getElementById("error3").style.contentVisibility = "hidden";
+
+
+            }
+            if (d <= 0 || e <= 0 || f <= 0 || i <= 0 || g <= 0) {
+                document.getElementById("tamil").style.borderColor = "red";
+                document.getElementById("english").style.borderColor = "red";
+                document.getElementById("maths").style.borderColor = "red";
+                document.getElementById("science").style.borderColor = "red";
+                document.getElementById("socialscience").style.borderColor = "red";
+                document.getElementById("error4").innerHTML = "please fill your mark";
+                document.getElementById("error5").innerHTML = "please fill your mark";
+                document.getElementById("error6").innerHTML = "please fill your mark";
+                document.getElementById("error7").innerHTML = "please fill your mark";
+                document.getElementById("error8").innerHTML = "please fill your mark";
+
+            } else {
+                document.getElementById("tamil").style.borderColor = "green";
+                document.getElementById("english").style.borderColor = "green";
+                document.getElementById("maths").style.borderColor = "green";
+                document.getElementById("science").style.borderColor = "green";
+                document.getElementById("socialscience").style.borderColor = "green";
+                document.getElementById("error4").style.contentVisibility = "hidden";
+                document.getElementById("error5").style.contentVisibility = "hidden";
+                document.getElementById("error6").style.contentVisibility = "hidden";
+                document.getElementById("error7").style.contentVisibility = "hidden";
+                document.getElementById("error8").style.contentVisibility = "hidden";
+
+
+            }
+
+            var result = "<table border='2' style='background:white;border-radius:20px;padding-right:20px;padding-left:20px;padding-top:20px;padding-bottom:20px;margin-left:50px;border:2px solid black;box-shadow: 5px 5px 20px rgb(8, 8, 8);font-family: sans-serif;'><tr><th>Name</th><th>Regno</th><th>Class & Section</th><th>Tamil</th><th>English</th><th>Maths</th><th>Science</th><th>SocialScience</th><th>Total</th><th>Grade</th></tr>";
+            var total = d + e + f + i + g;
+
+            var passfail = "";
+
+            if (d < 35 || e < 35 || f < 35 || i < 35 || g < 35) {
+                passfail = "Fail";
+            } else if (d < 35 < 100 || e < 35 < 100 || f < 35 < 100 || i < 35 < 100 || g < 35 < 100) {
+                passfail = "Pass";
+            }
+            result += "<tr><td>" + a + "</td><td>" + b + "</td><td>" + c + "</td><td>" + d + "</td><td>" + e + "</td><td>" + f + "</td><td>" + i + "</td><td>" + g + "</td><td>" + total + "</td><td>" + passfail + "</td></tr>";
+
+            result += "</table>";
+            document.getElementById("result").innerHTML = result;
+
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <fieldset>
+        <table class="table">
+
+            <legend> School Mark Register</legend>
+            <tr>
+                <td> <label for="name"> Name:</label></td>
+                <td><input type="name" placeholder="Enter Your Name" id="name">
+                    <p class="error" id="error1"></p>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="regno">Reg No:</label></td>
+                <td><input type="number" placeholder="Enter Your RegNo" id="regno">
+                    <p class="error" id="error2"></p>
+                </td>
+
+            </tr>
+            <tr>
+                <td> <label for="class&sec">class & Section</label></td>
+                <td><select name="class & sec" id="classsec">
+                        <option value="std"> Select Class & Section </option>
+                        <option value="VI A"> VI A</option>
+                        <option value="VI B"> VI B</option>
+                        <option value="VII A"> VII A</option>
+                        <option value="VII B"> VII B</option>
+                        <option value="VIII A"> VIII A</option>
+                        <option value="VIII B"> VIII B</option>
+                        <option value="IX A"> IX A</option>
+                        <option value="IX B"> IX B</option>
+                        <option value="X A"> X A</option>
+                        <option value="X B"> X B</option>
+                        <option value="X c"> X c</option>
+                    </select>
+                    <p class="error" id="error3"></p>
+
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="sub"> Tamil:</label></td>
+                <td><input type="number" placeholder="Enter Your Mark" value="0" id="tamil">
+                    <p class="error" id="error4"></p>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="sub"> English:</label></td>
+                <td><input type="number" placeholder="Enter Your Mark" value="0" id="english">
+                    <p class="error" id="error5"></p>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="sub"> Maths:</label></td>
+                <td><input type="number" placeholder="Enter Your Mark" value="0" id="maths">
+                    <p class="error" id="error6"></p>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="sub"> Science:</label></td>
+                <td><input type="number" placeholder="Enter Your Mark" value="0" id="science">
+                    <p class="error" id="error7"></p>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="sub"> Social Science:</label></td>
+                <td><input type="number" placeholder="Enter Your Mark" value="0" id="socialscience">
+                    <p class="error" id="error8"></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td><button class="button" onclick="calculate()">Submit</button></td>
+            </tr>
+
+
+
+
+        </table>
+    </fieldset>
+
+
+    <p class="result" id="result"></p>
+
+</body>
+
+</html>
